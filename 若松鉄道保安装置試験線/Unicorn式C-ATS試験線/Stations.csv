@@ -1,5 +1,5 @@
 BveTs Station List 2.00:shift_jis,,,,,,,,,,,,
 #stationKey,stationText,arrivalTime,depertureTime,stoppageTime,defaultTime,signalFlag,alightingTime,passengers,arrivalSoundKey,depertureSoundKey,doorReopen,stuckInDoor
-WT01,¼‹{“ìŒû,12:00:00,12:01:00,35,12:00:00,0,0,0.1,,Dep_Nishi,0.1,0
-WT02,“Œ•û,12:02:30,12:02:50,15,12:02:30,0,5,0.2,,Dep_Higa,0.05,0
-WT03,¬—Ñ,12:04:00,t,30,12:04:00,1,10,0,,,0,0
+WT01,ÂÂ¼â€¹{â€œÃ¬Å’Ã»,12:00:00,12:01:00,35,12:00:00,0,0,0.1,,Dep_Nishi,0.1,0
+WT02,â€œÅ’â€¢Ã»,12:02:30,12:02:50,15,12:02:30,0,5,0.2,,Dep_Higa,0.05,0
+WT03,ÂÂ¬â€”Ã‘,12:04:00,t,30,12:04:00,1,10,0,,,0,0
