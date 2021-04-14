@@ -1,0 +1,263 @@
+BveTs Map 2.02
+
+Structure.Load('Structure\StructureList.csv');
+Signal.Load('SignalList.csv');
+Sound.Load('Sounds.csv');
+Sound3D.Load('Sounds3D.csv');
+Station.Load('Stations.csv');
+//Train.Add('KQ1500', 'BVE_KQKSstr\khk1500\1500_4.txt', 0, 1);
+Section.SetSpeedLimit(0,25,45,75,100);
+
+#変数の記述例
+#$variable = 100;
+#$variable = 'hello';
+0;
+	
+980;
+	Beacon.Put(20, 0, 1);
+	Beacon.Put(21, 0, 000);
+
+1000;
+	Structure['StopL'].Put0(0, 0, 0);
+	Station['WT01'].Put(1, -1, 1);
+	Repeater['Rail0'].Begin0(0, 3, 5, 4.9, 'Rail1435');
+	Track['Ground'].Position(0, 0);
+	Repeater['GroundL'].Begin0('Ground', 0, 25, 25, 'GrassL');
+	Repeater['GroundR'].Begin0('Ground', 0, 25, 25, 'GrassR');
+	Background.Change('Background');
+	Curve.SetGauge(1.435);
+	Irregularity.Change(0.002, 0.00126, 0.0008, 50, 50, 50); 
+	Track[1].X.Interpolate(8);
+	Repeater['Rail1'].Begin0(1, 3, 5, 4.9, 'Rail1435');
+	Section.Begin(0, 1, 2, 3, 4);
+	Beacon.Put(20, 1, 1);
+	Beacon.Put(21, 1, 000);
+	Beacon.Put(24, 1, 1000);
+	Beacon.Put(21, 1, 005);
+	Structure['PlatformR'].Put0(0, 0, 0);
+	Structure['PlatformL'].Put0(1, 0, 0);
+	Structure['PlatformCR01'].Putbetween(0, 1);
+	Structure['PlatformRShadow'].Put0(0, 0, 0);
+	Structure['PlatformLShadow'].Put0(1, 0, 0);
+	Structure['PlatformCR11'].PutBetween(0, 1);
+	Structure['IslandRoofR'].PutBetween(0, 1);
+	Structure['RoofPillarR'].Put0(0, 0, 0);
+	Structure['RoofPillarL'].Put0(1, 0, 0);
+	
+1005;
+	Structure['PlatformR'].Put0(0, 0, 0);
+	Structure['PlatformL'].Put0(1, 0, 0);
+	Structure['PlatformCR02'].Putbetween(0, 1);
+	Structure['PlatformRShadow'].Put0(0, 0, 0);
+	Structure['PlatformLShadow'].Put0(1, 0, 0);
+	Structure['PlatformCR12'].PutBetween(0, 1);
+	
+1010;
+	Section.Begin(0, 1, 2, 3);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+	Track[1].X.Interpolate(8,-185.5);
+	Structure['FenceStepEndR'].Put0(0, 1, 0);
+	Structure['FenceStepEndL'].Put0(1, 1, 0);
+	Structure['PlatformEndFenceR'].PutBetween(0, 1);
+
+1030;
+	Track[1].X.Interpolate(6,185.5);
+
+1050; 
+	Track[1].X.Interpolate(4,0);
+	
+	Beacon.Put(12, 1, 090160);
+
+1060;
+    Track[2].X.Interpolate(4,-185.5);
+	Repeater['Rail2'].Begin0(2, 3, 5, 4.9, 'Rail1435');
+	Structure['Limit35L'].Put(2, 3, 0, 0, , , , , );
+	Track[3].X.Interpolate(0,185.5);
+	Repeater['Rail3'].Begin0(3, 3, 5, 4.9, 'Rail1435');
+
+1080;
+	Track[2].X.Interpolate(2,185.5);
+	Track[3].X.Interpolate(2,-185.5);
+	
+1100;
+	Track[2].X.Interpolate(0,0);
+	Repeater['Rail2'].End();
+	Track[3].X.Interpolate(4,0);
+	Repeater['Rail3'].End();
+
+1200;
+	Section.Begin(0, 1, 2, 3);
+	SpeedLimit.Begin(45);
+	Structure['Limit45'].Put(0, -3, 0, -0.1, , , , , );
+	Curve.BeginTransition();
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+	
+1210;	
+	Curve.Begin(185);
+	
+1253;
+    Curve.BeginTransition();
+
+1370;
+	Curve.Begin(-185);
+
+1413;
+	Curve.BeginTransition();
+	
+1420;
+	Curve.End();
+	Structure['LimitBack'].Put(1, 3, 0, 0, , , , , );
+	SpeedLimit.End();
+	Structure['LimitClear'].Put(0, -3, 0, 0, , , , , );
+	
+1580;
+	Beacon.Put(12, 1, 0);
+	Beacon.Put(1, 1, 1);
+	
+1600;
+	Section.Begin(0, 1, 2, 3, 4);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+
+1650;
+	Beacon.Put(15, 1, 435);
+	
+1800;
+	Section.Begin(0, 1, 2, 3, 4);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+
+1810;
+	Structure['FenceStepStartL'].Put0(0, 1, 0);
+	Structure['PlatformEndFenceL'].Put0(0, 1, 0);
+	Repeater['Platform0'].Begin0(0, 1, 5, 5, 'PlatformL');
+	Repeater['Platform10C'].Begin0(0, 1, 5, 5, 'PlatformCL11', 'PlatformCL12', 'PlatformCL13', 'PlatformCL14', 'PlatformCL15');
+	Repeater['RoofPillar0'].Begin0(0, 1, 10, 10, 'RoofPillarL');
+	Repeater['Roof0'].Begin0(0, 1, 10, 10, 'RoofL');
+	Repeater['PlatformWall0'].Begin0(0, 1, 5, 5, 'PlatformWallL');
+	Structure['FenceStepStartR'].Put0(1, 1, 0);
+	Structure['PlatformEndFenceR'].Put0(1, 1, 0);
+	Repeater['Platform1'].Begin0(1, 1, 5, 5, 'PlatformR');
+	Repeater['Platform11C'].Begin0(1, 1, 5, 5, 'PlatformCR11', 'PlatformCR12', 'PlatformCR13', 'PlatformCR14', 'PlatformCR15');
+	Repeater['RoofPillar1'].Begin0(1, 1, 10, 10, 'RoofPillarR');
+	Repeater['Roof1'].Begin0(1, 1, 10, 10, 'RoofR');
+	Repeater['PlatformWall1'].Begin0(1, 1, 5, 5, 'PlatformWallR');
+	
+1820;
+	Structure['StopBackL'].Put0(1, 0, 0);
+	
+1900;
+	Structure['StationBridgeL'].Put0(0, 0, 0);
+	Structure['StationBridgeR'].Put0(1, 0, 0);
+	Structure['UpStairsExitL'].Put0(0, 0, 0);
+	Structure['UpStairsEnterR'].Put0(1, 0, 0);
+	
+1980;
+	Structure['StopR'].Put0(0, 0, 0);
+	Station['WT02'].Put(-1, -3, 3);
+	Beacon.Put(21, 1, 001);
+	Beacon.Put(24, 1, 1000);
+	
+	
+1990;
+	
+	Repeater['Platform10C'].End();
+	Repeater['RoofPillar0'].End();
+	Repeater['Roof0'].End();
+	Repeater['Platform0'].End();
+	Structure['FenceStepEndL'].Put0(0, 1, 0);
+	Structure['PlatformEndFenceL'].Put0(0, 1, 0);
+	Repeater['PlatformWall0'].End();
+	Repeater['Platform11C'].End();
+	Repeater['RoofPillar1'].End();
+	Repeater['Roof1'].End();
+	Repeater['Platform1'].End();
+	Structure['FenceStepEndR'].Put0(1, 1, 0);
+	Structure['PlatformEndFenceR'].Put0(1, 1, 0);
+	Repeater['PlatformWall1'].End();
+	
+	
+2000;
+	Section.Begin(0, 1, 2, 3, 4);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+	
+2200;
+	Section.Begin(0, 1, 2, 3);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+
+2300;
+	Beacon.Put(10, 1, 0);
+	
+2400;
+	Section.Begin(0, 2);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal3'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+	Signal['Signal3'].Put(1, 0, -2.8, 2.8, 0, 0, 0, 0, 0, 0);
+    Structure['Limit45'].Put(0, -3, 0, -0.1, , , , , );
+    Structure['Limit35R'].Put(0, -3, -0.7, -0.1, , , , , );    
+	Beacon.Put(1, 1, 1);
+	
+2420;
+	Track[2].X.Interpolate(4,-185.5);
+	Repeater['Rail2'].Begin0(2, 3, 5, 4.9, 'Rail1435');
+	Track[3].X.Interpolate(0,185.5);
+	Repeater['Rail3'].Begin0(3, 3, 5, 4.9, 'Rail1435');
+	
+2440;
+	Track[2].X.Interpolate(2,185.5);
+	Track[3].X.Interpolate(2,-185.5);
+	
+2460;
+	Track[2].X.Interpolate(0,0);
+	Repeater['Rail2'].End();
+	Track[3].X.Interpolate(4,0);
+	Repeater['Rail3'].End();
+	
+2470;
+	Structure['FenceStepStartL'].Put0(0, 1, 0);
+	Structure['PlatformEndFenceL'].Put0(0, 1, 0);
+	Repeater['Platform0'].Begin0(0, 1, 5, 5, 'PlatformL');
+	Repeater['Platform10C'].Begin0(0, 1, 5, 5, 'PlatformCL11', 'PlatformCL12', 'PlatformCL13', 'PlatformCL14', 'PlatformCL15');
+	Repeater['RoofPillar0'].Begin0(0, 1, 10, 10, 'RoofPillarL');
+	Repeater['Roof0'].Begin0(0, 1, 10, 10, 'RoofL');
+	Repeater['PlatformWall0'].Begin0(0, 1, 5, 5, 'PlatformWallL');
+	Structure['FenceStepStartR'].Put0(1, 1, 0);
+	Structure['PlatformEndFenceR'].Put0(1, 1, 0);
+	Repeater['Platform1'].Begin0(1, 1, 5, 5, 'PlatformR');
+	Repeater['Platform11C'].Begin0(1, 1, 5, 5, 'PlatformCR11', 'PlatformCR12', 'PlatformCR13', 'PlatformCR14', 'PlatformCR15');
+	Repeater['RoofPillar1'].Begin0(1, 1, 10, 10, 'RoofPillarR');
+	Repeater['Roof1'].Begin0(1, 1, 10, 10, 'RoofR');
+	Repeater['PlatformWall1'].Begin0(1, 1, 5, 5, 'PlatformWallR');
+	
+2480;
+	Beacon.Put(10, 1, 20160);
+	Sound3d['Ari_Koba'].Put(3, 4);
+	
+2630;
+	Structure['StopR'].Put0(0, 0, 0);
+	Station['WT03'].Put(-1, -0.5, 0.5);
+	Beacon.Put(22, 1, 1);
+	Sound3d['Ari_Koba'].Put(3, 4);
+	
+2640;
+	Section.Begin(0);
+	
+2650;
+	Repeater['Rail0'].End();
+	Repeater['Rail1'].End();
+	Repeater['Platform10C'].End();
+	Repeater['RoofPillar0'].End();
+	Repeater['Roof0'].End();
+	Repeater['Platform0'].End();
+	Repeater['PlatformWall0'].End();
+	Repeater['Platform11C'].End();
+	Repeater['RoofPillar1'].End();
+	Repeater['Roof1'].End();
+	Repeater['Platform1'].End();
+	Repeater['PlatformWall1'].End();
+	Structure['StationBridgeL'].Put(0, 2, -6.3, 0, 0, 0, 0, 0, 0);
+	Structure['StationBridgeR'].Put(1, -2, -6.3, 0, 0, 0, 0, 0, 0);
