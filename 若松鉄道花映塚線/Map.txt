@@ -1,0 +1,124 @@
+BveTs Map 2.02
+
+Structure.Load('Structure\StructureList.csv');
+Signal.Load('SignalList.csv');
+Sound.Load('');
+Sound3D.Load('');
+Station.Load('');
+Train.Add('KQ1500', 'BVE_KQKSstr\khk1500\1500_4.txt', 0, 1);
+
+#変数の記述例
+#$variable = 100;
+#$variable = 'hello';
+
+0;
+	Repeater['Rail0'].Begin0(0, 3, 1, 0.9, '1Ballast01', '1Ballast02', '1Ballast03', '1Ballast04', '1Ballast05');
+	Track['Ground'].Position(0, 0);
+	Repeater['GroundL'].Begin0('Ground', 1, 25, 25, 'GrassL');
+	Repeater['GroundR'].Begin0('Ground', 1, 25, 25, 'GrassR');
+	Background.Change('Background');
+	Curve.SetGauge(1.435);
+	Irregularity.Change(0.002, 0.00126, 0.0008, 50, 50, 50); 
+	Track[1].X.Interpolate(8);
+	Repeater['Rail1'].Begin0(1, 3, 1, 0.9, '1Ballast01', '1Ballast02', '1Ballast03', '1Ballast04', '1Ballast05');
+	Section.Begin(0, 10, 15, 19, 25, 31);
+
+    
+10;
+	Track[1].X.Interpolate(8,-185.5);
+	
+20;
+	PreTrain.Pass(0);
+
+30;
+	Track[1].X.Interpolate(6,185.5);
+
+50; 
+	Track[1].X.Interpolate(4,0);
+
+60;
+    Track[2].X.Interpolate(4,-185.5);
+	Repeater['Rail2'].Begin0(2, 3, 1, 0.9, '1Ballast01', '1Ballast02', '1Ballast03', '1Ballast04', '1Ballast05');
+	Structure['Limit35L'].Put(2, 3, 0, 0, , , , , );
+	Track[3].X.Interpolate(0,185.5);
+	Repeater['Rail3'].Begin0(3, 3, 1, 0.9, '1Ballast01', '1Ballast02', '1Ballast03', '1Ballast04', '1Ballast05');
+
+80;
+	Track[2].X.Interpolate(2,185.5);
+	Track[3].X.Interpolate(2,-185.5);
+	
+100;
+	Track[2].X.Interpolate(0,0);
+	Repeater['Rail2'].End();
+	Track[3].X.Interpolate(4,0);
+	Repeater['Rail3'].End();
+	Train['KQ1500'].Stop(0, 0, 3.5, 45);
+	PreTrain.Pass(0);
+	Section.Begin(0, 10, 15, 19, 25, 31);
+	SpeedLimit.Begin(95);
+
+200;
+	Section.Begin(0, 10, 15, 19);
+	SpeedLimit.Begin(45);
+	Structure['Limit45'].Put(0, -3, 0, 0, , , , , );
+	Curve.BeginTransition();
+	
+210;
+	Curve.Begin(185);
+	
+253;
+    Curve.BeginTransition();
+
+370;
+	Curve.Begin(-185);
+
+413;
+	Curve.BeginTransition();
+	
+420;
+	Curve.End();
+	Structure['LimitBack'].Put(1, 3, 0, 0, , , , , );
+	
+520;
+	PreTrain.Pass(40);
+
+580;
+	SpeedLimit.End();
+	Structure['LimitClear'].Put(0, -3, 0, 0, , , , , );
+	
+600;
+	Section.Begin(0, 10, 15, 19, 25, 31);
+	PreTrain.Pass(40);
+	
+720;
+	PreTrain.Pass(56);
+	
+800;
+	Section.Begin(0, 10, 15, 19, 25, 31);
+	PreTrain.Pass(56);
+	
+920;
+	PreTrain.Pass(70);
+	
+1000;
+	Section.Begin(0, 10, 15, 19, 25, 31);
+	PreTrain.Pass(70);
+	
+1120;
+	PreTrain.Pass(88);
+	
+1200;
+	Section.Begin(0, 10, 15, 19, 25, 31);
+	PreTrain.Pass(88);
+
+1400;
+	Section.Begin(0, 10, 15, 19, 25, 31);
+
+1420;
+	Train['KQ1500'].Stop(4, 120, , );
+	PreTrain.Pass(110);
+	PreTrain.Pass(180);
+
+1500;
+	PreTrain.Pass(110);
+	PreTrain.Pass(180);
