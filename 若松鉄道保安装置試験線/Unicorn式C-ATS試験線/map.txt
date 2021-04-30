@@ -15,7 +15,7 @@ Section.SetSpeedLimit(0,25,45,75,100);
 	
 980;
 	Beacon.Put(20, 0, 1);
-	Beacon.Put(21, 0, 000);
+	Beacon.Put(21, 0, 000);//路線識別コード(京急)
 
 1000;
 	Structure['StopL'].Put0(0, 0, 0);
