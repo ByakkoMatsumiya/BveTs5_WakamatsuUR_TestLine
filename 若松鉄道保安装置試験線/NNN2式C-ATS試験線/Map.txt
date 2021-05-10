@@ -1,0 +1,617 @@
+BveTs Map 2.02
+
+Structure.Load('Structure\StructureList.csv');
+Signal.Load('SignalList.csv');
+Sound.Load('Sounds.csv');
+Sound3D.Load('Sounds3D.csv');
+Station.Load('Stations.csv');
+Train.Add('KQ1500', 'BVE_KQKSstr\khk1500\1500_4.txt', 6, -1);
+Section.SetSpeedLimit(0,25,45,75,120);
+
+#変数の記述例
+#$variable = 100;
+#$variable = 'hello';
+
+0;
+	Curve.SetGauge(1.435);
+	Irregularity.Change(0.002, 0.00126, 0.0008, 50, 50, 50); 
+	Background.Change('Background');
+	Track['Ground'].Position(0, 0);
+	Repeater['GroundL'].Begin0('Ground', 0, 25, 25, 'GrassL');
+	Repeater['GroundR'].Begin0('Ground', 0, 25, 25, 'GrassR');
+	
+980;
+	Repeater['Platform0'].Begin0(0, 1, 5, 5, 'PlatformR'); // ホーム縁
+	Repeater['Platform1'].Begin0(1, 1, 5, 5, 'PlatformL'); // ホーム縁
+	Repeater['Platform2'].Begin0(2, 1, 5, 5, 'PlatformR');
+	Repeater['Platform0Shadow'].Begin0(0, 1, 5, 5, 'PlatformRShadow'); // ホーム縁の影
+	Repeater['Platform1Shadow'].Begin0(1, 1, 5, 5, 'PlatformLShadow'); // ホーム縁の影
+	Repeater['Platform2Shadow'].Begin0(2, 1, 5, 5, 'PlatformRShadow'); // ホーム縁の影
+	Structure['PlatformCL11'].PutBetween(1, 2);
+	Structure['PlatformCR11'].Put(0, , , , , , , , ); // ホーム中央部
+	Repeater['RoofPillar0'].Begin0(0, 1, 5, 5, 'RoofPillarR'); // ホーム屋根柱
+	Repeater['RoofPillar1'].Begin0(1, 1, 5, 5, 'RoofPillarL'); // ホーム屋根柱
+	Repeater['RoofPillar2'].Begin0(2, 1, 5, 5, 'RoofPillarR'); // ホーム屋根柱
+	Structure['IslandRoofL'].PutBetween(1, 2); // ホーム屋根
+	Structure['IslandRoofR'].Put(0, , , , , , , , ); // ホーム屋根
+	Repeater['Platform3'].Begin0(3, 1, 5, 5, 'PlatformL'); // ホーム縁
+	Repeater['Platform3C'].Begin0(3, 1, 5, 5, 'PlatformCL11', 'PlatformCL12', 'PlatformCL13', 'PlatformCL14', 'PlatformCL15'); // ホーム中央部(標準幅)
+	Repeater['RoofPillar3'].Begin0(3, 1, 10, 10, 'RoofPillarL'); // ホーム屋根柱
+	Repeater['Roof3'].Begin0(3, 1, 10, 10, 'RoofL'); // ホーム屋根(標準幅)
+	Repeater['PlatformWall3'].Begin0(3, 1, 5, 5, 'PlatformWallL'); // ホームフェンス(標準幅)
+	Beacon.Put(24, 0, 03120030);
+	Repeater['Rail0'].Begin0(0, 3, 5, 4.5, 'Rail1435');
+	Track[1].X.Interpolate(0);
+	Repeater['Rail1'].Begin0(1, 3, 5, 4.5, 'Rail1435');
+	Track[2].X.Interpolate(-8);
+	Repeater['Rail2'].Begin0(2, 3, 5, 4.5, 'Rail1435');
+	Track[3].X.Interpolate(-12);
+	Repeater['Rail3'].Begin0(3, 3, 5, 4.5, 'Rail1435');
+	Section.Begin(16, 18, 19, 22, 25);
+	
+985;
+	Structure['PlatformCL12'].PutBetween(1, 2);
+	Structure['PlatformCR12'].Put(0, , , , , , , , );
+	
+	
+990;
+	Structure['PlatformCL13'].PutBetween(1, 2); // ホーム中央部
+	Structure['IslandRoofL'].PutBetween(1, 2);
+	Structure['PlatformCR13'].Put(0, , , , , , , , );
+	Structure['IslandRoofR'].Put(0, , , , , , , , );
+	
+995;
+	Structure['PlatformCL14'].PutBetween(1, 2);
+	Structure['PlatformCR14'].Put(0, , , , , , , , );
+	Structure['IslandRoofR'].Put(0, , , , , , , , );
+	
+1000;
+	station['KH01'].Put(-1, -1, 1);
+	Structure['PlatformCL15'].PutBetween(1, 2); // ホーム中央部
+	Structure['IslandRoofL'].PutBetween(1, 2);
+	Structure['PlatformCR15'].Put(0, , , , , , , , );
+	Repeater['RoofPillar0'].End(); // ホーム屋根柱
+	
+1005;
+	Structure['PlatformCL11'].PutBetween(1, 2);
+	Structure['IslandRoofL'].PutBetween(1, 2);
+	Repeater['Platform0'].End(); // ホーム縁
+	Repeater['Platform0Shadow'].End(); // ホーム縁の影
+	Structure['FenceStepEndR'].Put0(0, 1, 0); // 関係者用ステップ
+	Structure['PlatformEndFenceR'].Put(0, , , , , , , , ); // 駅端フェンス
+	
+1010;
+	Structure['PlatformCL12'].PutBetween(1, 2);
+	Repeater['RoofPillar1'].End(); // ホーム屋根柱
+	Repeater['RoofPillar2'].End(); // ホーム屋根柱
+	Repeater['RoofPillar3'].End(); // ホーム屋根柱
+	Repeater['Roof3'].End();
+	Section.Begin(16, 18, 19, 22, 25);
+	Structure['SigPole'].Put(0, 3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal4yy'].Put(0, 0, 3, 4, 0, 0, 0, 0, 0, 0);
+	Beacon.Put(12, 0, 0);
+	
+1015;
+	Repeater['Platform1'].End(); // ホーム縁
+	Repeater['Platform1Shadow'].End(); // ホーム縁の影
+	Repeater['Platform2'].End(); // ホーム縁
+	Repeater['Platform2Shadow'].End(); // ホーム縁の影
+	Repeater['Platform3'].End();
+	Repeater['Platform3C'].End();
+	Repeater['PlatformWall3'].End();
+	Structure['PlatformEndFenceL'].PutBetween(1, 2);
+	Structure['PlatformEndFenceL'].Put0(3, 1, 0); // 駅端フェンス
+	Structure['FenceStepEndL'].Put0(1, 1, 0); // 関係者用ステップ
+	Structure['FenceStepEndR'].Put0(2, 1, 0); // 関係者用ステップ
+	Structure['FenceStepEndL'].Put0(3, 1, 0); // 関係者用ステップ
+	
+1020;
+	Curve.Begin(-240);
+	Track[2].X.Interpolate(-8, 240);
+	Track[3].X.Interpolate(-12, 240);
+	Structure['SigPole'].Put(2, 3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['SignalRed4'].Put(0, 2, 3, 4, 0, 0, 0, 0, 0, 0);
+	Structure['SigPole'].Put(3, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['SignalRed4'].Put(0, 3, -3, 4, 0, 0, 0, 0, 0, 0);
+	
+	
+1050;
+	Curve.Begin(240);
+	Track[2].X.Interpolate(-6, -240);
+	Track[3].X.Interpolate(-10, -240);
+	
+1080;
+	Curve.End();
+	Track[2].X.Interpolate(-4, 0);
+	Track[3].X.Interpolate(-8, 185.5);
+	
+1100;
+	Track[3].X.Interpolate(-6, -185.5);
+
+1120;
+	Track[3].X.Interpolate(-4, 0);
+	
+1130;
+	Track[1].X.Interpolate(0, 240);
+	Track[2].X.Interpolate(-4, 240);
+	Track[3].X.Interpolate(-4, 120);
+	Curve.Begin(-240);
+	
+1160;
+	Track[1].X.Interpolate(2, -240);
+	Track[2].X.Interpolate(-2, -240);
+	Track[3].X.Interpolate(0, -120);
+	Curve.Begin(240);
+	
+1190;
+	Track[1].X.Interpolate(4, 0);
+	Track[2].X.Interpolate(0, 0);
+	Track[3].X.Interpolate(4, 0);
+	Curve.End();
+	Beacon.Put(16, 0, 090508);
+	Beacon.Put(17, 0, 0050);
+	
+1200;
+	Repeater['Rail2'].End();
+	Repeater['Rail3'].End();
+	Section.Begin(16, 18, 19, 22, 25);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+	
+	
+1240;
+	SpeedLimit.Begin(25);
+	Curve.BeginTransition();
+	
+1250;
+	Curve.Begin(-70, 0.009);
+	
+1280;
+	Curve.BeginTransition();
+	
+1290;
+	SpeedLimit.Begin(40);
+	Curve.Begin(130, 0.009);
+	
+1340;
+	Curve.BeginTransition();
+	
+1350;
+	SpeedLimit.End();
+	Curve.End();
+	
+1450;
+	Beacon.Put(16, 0, 0);
+	
+1500;
+	Section.Begin(16, 18, 19, 22, 25);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+	
+1700;
+	Track[1].X.Interpolate(4, 330);
+	Track[2].X.Interpolate(0);
+	Repeater['Rail2'].Begin0(2, 3, 5, 4.5, 'Rail1435');
+	Track[4].X.Interpolate(0);
+	Repeater['Rail4'].Begin0(4, 3, 5, 4.5, 'Rail1435');
+	
+1725;
+	Track[1].X.Interpolate(5, 0);
+	
+1735;
+	Track[3].X.Interpolate(4);
+	Repeater['Rail3'].Begin0(3, 3, 5, 4.5, 'Rail1435');
+	Repeater['Rail6'].Begin0(6, 3, 5, 4.5, 'Rail1435');
+	Track[6].X.Interpolate(0, 185.5);
+	
+1755;
+	Track[6].X.Interpolate(2, -185.5);
+	
+1775;
+	Track[6].X.Interpolate(4, 0);
+	
+1780;
+	Track[1].X.Interpolate(9, -330);
+
+1805;
+	Track[1].X.Interpolate(10, 0);
+	Track[3].X.Interpolate(4);
+	Repeater['Rail3'].Begin0(3, 3, 5, 4.5, 'Rail1435');
+	Section.Begin(16, 18, 19, 22, 25);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+	
+1850;
+	Train['KQ1500'].Stop(0, 180, 0, 0);
+	
+1885;
+	Track[2].X.Interpolate(0, 185.5);
+	
+1905;
+	Track[2].X.Interpolate(2, -185.5);
+	
+1925;
+	Track[2].X.Interpolate(4, 0);
+	Track[4].X.Interpolate(0, -290);
+	Track[5].X.Interpolate(10, -290);
+	Repeater['Rail5'].Begin0(5, 3, 5, 4.5, 'Rail1435');
+	
+1970;
+	Track[4].X.Interpolate(-3, 290);
+	Track[5].X.Interpolate(7, 290);
+	
+1990;
+	Repeater['Platform0'].Begin0(0, 1, 5, 5, 'PlatformL');
+	Repeater['Platform1'].Begin0(1, 1, 5, 5, 'PlatformL');
+	Repeater['Platform4'].Begin0(4, 1, 5, 5, 'PlatformR');
+	Repeater['Platform5'].Begin0(5, 1, 5, 5, 'PlatformR');
+	Repeater['Platform0Shadow'].Begin0(0, 1, 5, 5, 'PlatformLShadow'); // ホーム縁の影
+	Repeater['Platform1Shadow'].Begin0(1, 1, 5, 5, 'PlatformLShadow'); // ホーム縁の影
+	Repeater['Platform4Shadow'].Begin0(4, 1, 5, 5, 'PlatformRShadow'); // ホーム縁の影
+	Repeater['Platform5Shadow'].Begin0(5, 1, 5, 5, 'PlatformRShadow'); // ホーム縁の影
+	Repeater['RoofPillar0'].Begin0(0, 1, 5, 5, 'RoofPillarL'); // ホーム屋根柱
+	Repeater['RoofPillar1'].Begin0(1, 1, 5, 5, 'RoofPillarL'); // ホーム屋根柱
+	Structure['PlatformCL11'].PutBetween(0, 4);
+	Structure['PlatformCL11'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+1995;
+	Structure['PlatformCL12'].PutBetween(0, 4);
+	Structure['PlatformCL12'].PutBetween(1, 5);
+	
+2000;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2005;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2010;
+	Structure['PlatformCL15'].PutBetween(0, 4);
+	Structure['PlatformCL15'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2015;
+	Track[4].X.Interpolate(-6, 0);
+	Track[5].X.Interpolate(4, 0);
+	Structure['PlatformCL11'].PutBetween(0, 4);
+	Structure['PlatformCL11'].PutBetween(1, 5);
+	
+2020;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2025;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+
+2030;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2035;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2040;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2045;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2050;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2055;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+
+2060;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2065;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2070;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2075;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+
+2080;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2085;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2090;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2095;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2100;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2105;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2110;
+	Structure['PlatformCL15'].PutBetween(0, 4);
+	Structure['PlatformCL15'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2115;
+	Track[4].X.Interpolate(-6, 0);
+	Track[5].X.Interpolate(4, 0);
+	Structure['PlatformCL11'].PutBetween(0, 4);
+	Structure['PlatformCL11'].PutBetween(1, 5);
+	
+2120;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2125;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+
+2130;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2135;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2140;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2145;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2150;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2155;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+
+2160;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2165;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2170;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2175;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+
+2180;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2185;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2190;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2195;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2200;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2205;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2210;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2215;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2220;
+	Station['KH02'].Put(-1, -2, 2);
+	Structure['StopR'].Put0(0, 0, 0);
+	Structure['PlatformCL12'].PutBetween(0, 4);
+	Structure['PlatformCL12'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2225;
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	
+2230;
+	Structure['PlatformCL14'].PutBetween(0, 4);
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+
+2235;
+	Structure['PlatformCL15'].PutBetween(0, 4);
+	Structure['PlatformCL15'].PutBetween(1, 5);
+	
+2240;
+	Track[4].X.Interpolate(-6, 290);
+	Structure['PlatformCL11'].PutBetween(0, 4);
+	Structure['PlatformCL11'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(0, 4); // ホーム屋根
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2245;
+	Structure['PlatformCL12'].PutBetween(0, 4);
+	Structure['PlatformCL12'].PutBetween(1, 5);
+
+2250;
+	Repeater['Platform0'].End();
+	Repeater['Platform4'].End();
+	Repeater['Platform0Shadow'].End(); // ホーム縁の影
+	Repeater['Platform4Shadow'].End(); // ホーム縁の影
+	Repeater['RoofPillar0'].End(); // ホーム屋根柱
+	Structure['PlatformCL13'].PutBetween(0, 4);
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2255;
+	Structure['PlatformCL14'].PutBetween(1, 5);
+
+2260;
+	Section.Begin(16, 18, 19, 22, 25);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);
+	Structure['PlatformCL15'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2265;
+	Structure['PlatformCL11'].PutBetween(1, 5);
+	
+2270;
+	Structure['PlatformCL12'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+
+2275;
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	
+2280;
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2285;
+	Track[4].X.Interpolate(-3, -290);
+	Structure['PlatformCL15'].PutBetween(1, 5);
+	
+2290;
+	Structure['PlatformCL11'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2295;
+	Structure['PlatformCL12'].PutBetween(1, 5);
+	
+2300;
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2305;
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2310;
+	Structure['PlatformCL15'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+
+2315;
+	Structure['PlatformCL11'].PutBetween(1, 5);
+	
+2320;
+	Structure['PlatformCL12'].PutBetween(1, 5);
+	Structure['IslandRoofL'].PutBetween(1, 5); // ホーム屋根
+	
+2325;
+	Structure['PlatformCL13'].PutBetween(1, 5);
+	
+2330;
+	Track[4].X.Interpolate(0, 0);
+	Repeater['Platform1'].End();
+	Repeater['Platform5'].End();
+	Repeater['Platform1Shadow'].End(); // ホーム縁の影
+	Repeater['Platform5Shadow'].End(); // ホーム縁の影
+	Repeater['RoofPillar1'].End(); // ホーム屋根柱
+	Structure['PlatformCL14'].PutBetween(1, 5);
+	
+2360;
+	Track[1].X.Interpolate(10, -330);
+	Track[2].X.Interpolate(4, -185.5);
+	
+2380;
+	Track[2].X.Interpolate(2, 185.5);
+
+2385;
+	Track[1].X.Interpolate(9, 0);
+	
+2400;
+	Track[2].X.Interpolate(0, 0);
+	
+2440;
+	Track[1].X.Interpolate(5, 330);
+	
+2465;
+	Track[1].X.Interpolate(4, 0);
+	
+2500;
+	Section.Begin(16, 18, 19, 22, 25);
+	Structure['SigPole'].Put(0, -3, 0, 0, 0, 0, 0, 0, 0);
+	Signal['Signal5'].Put(0, 0, -3, 4, 0, 0, 0, 0, 0, 0);

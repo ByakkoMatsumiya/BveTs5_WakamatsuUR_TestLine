@@ -1,0 +1,11 @@
+BveTs Station List 2.00:shift_jis,,,,,,,,,,,,
+#stationKey,stationText,arrivalTime,depertureTime,stoppageTime,defaultTime,signalFlag,alightingTime,passengers,arrivalSoundKey,depertureSoundKey,doorReopen,stuckInDoor
+KH01,橋本,12:00:00,12:01:00,35,12:00:00,1,0,0.1,,,0.1,0
+KH02,碧山神戸,12:02:30,12:03:30,30,12:02:30,0,5,0.2,,,0.05,0
+KH03,二見,p,,0,12:04:00,0,0,0.2,,,0.1,0
+KH04,国崎,p,,0,12:06:00,0,0,0.2,,,0.1,0
+KH05,東岡本,,12:08:00,20,12:07:30,0,5,0.3,,,0.1,0
+KH06,四条大宮,,12:11:00,30,12:10:00,1,10,0.5,,,0.2,0
+KH07,南鈴橋,p,,0,12:12:00,0,0,0.5,,,0.1,0
+KH08,西彩花,p,,0,12:14:00,0,0,0.5,,,0.1,0
+KH09,彩花市,12:16:00,t,,12:16:00,1,10,0,,,0,0
